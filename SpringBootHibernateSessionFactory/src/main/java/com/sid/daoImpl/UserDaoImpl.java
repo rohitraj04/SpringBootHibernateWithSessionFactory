@@ -1,5 +1,6 @@
 package com.sid.daoImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -24,7 +25,12 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> getAll() {
-		return getSession().createQuery("from user").list();
+		List<User> allUsers = (List<User>)getSession().createQuery("FROM USER_DETAILS").list();
+		List<User> users = new ArrayList<User>();
+		for(User u : allUsers){
+			users.add(u);
+		}
+		return users;
 	}
 
 	@Override
