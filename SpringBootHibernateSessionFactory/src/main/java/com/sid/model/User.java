@@ -10,9 +10,13 @@ import javax.persistence.Table;
 @Table(name="USER_DETAILS")
 public class User {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer userId;
 	private String userName;
+	 public User(String userName){
+		 this.userName = userName;
+		 
+	 }
 	public Integer getUserId() {
 		return userId;
 	}

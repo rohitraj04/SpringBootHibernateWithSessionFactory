@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.sid.dao.UserDao;
+import com.sid.model.AllDetails;
 import com.sid.model.User;
+import com.sid.model.User_Security;
 @Repository
 @Transactional
 public class UserDaoImpl implements UserDao {
@@ -34,8 +36,17 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public String adduser(User user) {
-		getSession().save(user);
+	public String adduser(AllDetails user) {
+		User u = new User(user.getUserName());
+		//u.setUserName();
+		User_Security us = new User_Security();
+		us.setUserName(user.getUserName());
+		us.setUserPassword(user.getPassword());
+		getSession().save(u);
+		getSession().save(us);
+		
+		
+		//getSession().save(us);
 		return "Added";
 	}
 

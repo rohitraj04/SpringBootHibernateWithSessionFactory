@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sid.dao.UserDao;
+import com.sid.model.AllDetails;
 import com.sid.model.User;
 import com.sid.service.UserService;
 @Service
@@ -19,7 +20,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String adduser(User user) {
+	public String adduser(AllDetails user) {
 		// TODO Auto-generated method stub
 		return userDao.adduser(user);
 	}
